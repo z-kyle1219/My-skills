@@ -24,6 +24,7 @@ My-skills/
 |---|---|---|
 | `standard-commit` | 跨项目通用 | 从真实 git 改动产出规范英文 Conventional Commit + 可执行命令（不代提交） |
 | `pre-commit-checklist` | 通用（流程） | 提交前检查：结构文档同步 → 校验/测试 → 扫隐私文件 → 提交信息 → 不代提交 |
+| `feature-kickoff` | 通用（流程） | 新功能启动梳理：功能简述 → 关键节点 / 待确认问题 / 影响面与风险 / 测试点 / 建议分支名（不实现） |
 
 ## 与各 Agent 技能目录的关系
 
