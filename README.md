@@ -36,6 +36,7 @@ My-skills/
 |---|---|
 | WorkBuddy | `C:\Users\huawei\.workbuddy\skills\` |
 | AirJelly | `C:\Users\huawei\AppData\Roaming\AirJelly\skills\` |
+| Codex | `C:\Users\huawei\.codex\skills\` |
 
 同步方式：**只允许软链接**（junction），**不要使用复制**——复制会各自分叉、改一处要同步多处，正是本库要消除的问题。
 
@@ -45,8 +46,19 @@ My-skills/
 powershell -ExecutionPolicy Bypass -File D:\My-skills\link.ps1
 ```
 
-- `-Force`：源位置变了 / 链接指歪或悬空时重指（遇真实目录只报警不删）。
-- `-WhatIf`：空跑预演，不实际改动。
+`-Force`：源位置变了 / 链接指歪或悬空时重指（遇真实目录只报警不删）。
+
+脚本默认只覆盖 WorkBuddy 和 AirJelly。要同时同步 Codex，在当前会话里执行（`-Targets` 是覆盖语义，三个都要写全）：
+
+```powershell
+cd D:\My-skills
+.\link.ps1 -Targets "$env:USERPROFILE\.codex\skills","$env:USERPROFILE\.workbuddy\skills","$env:APPDATA\AirJelly\skills"
+```
+
+两个已知坑：
+
+- 用 `powershell -File` 跨进程传 `-Targets` 时，逗号列表会被压成一个字符串，脚本会把整串当路径，报「不支持给定路径的格式」。改为在当前会话直接调用 `.\link.ps1`。
+- 脚本没有 `-WhatIf` 预演参数，只支持 `-Force`、`-Source`、`-Targets`。
 
 手动建单个链接的等价写法（Windows junction，普通 PowerShell 即可，无需管理员）：
 
