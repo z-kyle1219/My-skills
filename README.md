@@ -34,6 +34,7 @@ My-skills/
 
 | Agent | 技能目录 |
 |---|---|
+| DeepSeek Harness (dsh) | `C:\Users\huawei\.dsh\skills\` |
 | WorkBuddy | `C:\Users\huawei\.workbuddy\skills\` |
 | AirJelly | `C:\Users\huawei\AppData\Roaming\AirJelly\skills\` |
 | Codex | `C:\Users\huawei\.codex\skills\` |
@@ -48,11 +49,11 @@ powershell -ExecutionPolicy Bypass -File D:\My-skills\link.ps1
 
 `-Force`：源位置变了 / 链接指歪或悬空时重指（遇真实目录只报警不删）。
 
-脚本默认只覆盖 WorkBuddy 和 AirJelly。要同时同步 Codex，在当前会话里执行（`-Targets` 是覆盖语义，三个都要写全）：
+脚本默认覆盖 DeepSeek Harness（dsh）、WorkBuddy 和 AirJelly。要同时同步 Codex，在当前会话里执行（`-Targets` 是覆盖语义，几个都要写全）：
 
 ```powershell
 cd D:\My-skills
-.\link.ps1 -Targets "$env:USERPROFILE\.codex\skills","$env:USERPROFILE\.workbuddy\skills","$env:APPDATA\AirJelly\skills"
+.\link.ps1 -Targets "$env:USERPROFILE\.dsh\skills","$env:USERPROFILE\.workbuddy\skills","$env:APPDATA\AirJelly\skills","$env:USERPROFILE\.codex\skills"
 ```
 
 两个已知坑：

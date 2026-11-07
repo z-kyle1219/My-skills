@@ -16,6 +16,7 @@ param(
     [switch]$Force,
     [string]$Source = 'D:\My-skills',
     [string[]]$Targets = @(
+        "$env:USERPROFILE\.dsh\skills",
         "$env:USERPROFILE\.workbuddy\skills",
         "$env:APPDATA\AirJelly\skills"
     )
